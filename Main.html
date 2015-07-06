@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<!-- Programmed by Tawfeeq Abdul Gaffoor
+	 Driven By AmCharts/AmMaps-->
+	
+<html>
+<script src="http://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="ammap\maps\js\worldHigh.js"></script>
+<script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="http://www.amcharts.com/lib/3/serial.js"></script>
+<script src="http://www.amcharts.com/lib/3/pie.js"></script>
+<script src="PopData.js" type="text/javascript"></script>
+<script src="InitData.js" type="text/javascript"></script>
+<script src="GDPData.js" type="text/javascript"></script>
+<script src="BRData.js" type="text/javascript"></script>
+<script src="AreaData.js" type="text/javascript"></script>
+
+
+<style>
+	#BRdiv a,
+	#areadiv a,
+	#GDPdiv a{
+    font-size: 0!important;
+}
+	#credits{
+		position: absolute;
+		bottom: 0px;
+		right: 6%;
+		color: #808080
+
+	}
+
+</style>
+
+<script>	
+	
+	
+	//creating the map
+	 var map = AmCharts.makeChart("mapdiv", {
+	  "type": "map",
+	  "theme": "light",
+	  "showDescriptionOnHover" : false,
+	  "mouseWheelZoomEnabled" : true,
+	  "backgroundAlpha" : 0,
+	  "colorSteps": 100,
+	 backgroundColor : "#535364",
+	  
+	  "titles" : [
+		  {
+			  "text" : "Data Map",
+			  "size" : 15
+		  }],
+		  
+	  "dataProvider": 
+		  {
+		    "map": "worldHigh",
+			"areas": dataSets[0]
+		  },
+	  "areasSettings": 
+		  {
+		    "autoZoom": false,
+			color : "#B4B4B7",
+			colorSolid : "#84ADE9",
+			selectedColor : "#84ADE9",
+			outlineColor : "#666666",
+			rollOverColor : "#9EC2F7",
+			rollOverOutlineColor : "#000000",
+			"balloonText": "[[title]]: <b>[[value]]</b>"
+		  },
+		  
+	  "valueLegend": {
+		  "right" : 150,
+		  "minvalue": "Low",
+		  "maxValue": "High"
+	  }	 
+	  
+	 }); // Map is created
+	 
+	 
+	 
+	 // Creating the energy Chart
+
+	
+	// Creating the Population map
+	var population = AmCharts.makeChart("popdiv", {
+	  "type": "pie",
+	  "theme": "light",
+	  "titles" : [
+		  {
+			  "text" : "Population",
+			  "size" : 11
+		  }],
+	  "dataProvider": PopulationData.AF,
+	  "titleField": "Title",
+	  "valueField": "data",
+	  "labelRadius": 5,
+	  "radius": "42%",
+	  "innerRadius": "60%",
+	  "labelText": "[[title]]",
+	} );
+	
+	
+	// Creating the Area chart
+	var Area = AmCharts.makeChart("areadiv", {
+	  "type": "pie",
+	  "theme": "light",
+	  "titles" : [
+		  {
+			  "text" : "Area",
+			  "size" : 11
+		  }],
+	  "dataProvider": AreaData.AF,
+	  "titleField": "Title",
+	  "valueField": "data",
+	  "labelRadius": 5,
+	  "radius": "42%",
+	  "innerRadius": "60%",
+	  "labelText": "[[title]]",
+	} );
+	
+	
+	
+	// Creating the GDP chart
+	var GDP = AmCharts.makeChart( "GDPdiv", {
+	  "type": "serial",
+	  "theme": "light",
+	  "dataProvider": GDPData.AF,
+	   "titles" : [
+		  {
+			  "text" : "GDP",
+			  "size" : 11
+		  }],
+	  "valueAxes": [ {
+	    "gridColor": "#FFFFFF",
+	    "gridAlpha": 0.2,
+	    "dashLength": 0,
+		"minimum" : 0
+	  } ],
+	  "gridAboveGraphs": true,
+	  "startDuration": 1,
+	  "graphs": [ {
+	    "balloonText": "[[category]]: <b>[[value]]</b>",
+	    "fillAlphas": 0.8,
+	    "lineAlpha": 0.2,
+	    "type": "column",
+	    "valueField": "GDP"
+	  } ],
+	  "chartCursor": {
+	    "categoryBalloonEnabled": false,
+	    "cursorAlpha": 0,
+	    "zoomable": false
+	  },
+	  "categoryField": "Area",
+	  "categoryAxis": {
+	    "gridPosition": "start",
+	    "gridAlpha": 0,
+	    "tickPosition": "start",
+	    "tickLength": 20
+	  },
+	  "export": {
+	    "enabled": true
+	  },
+	
+	} );
+	
+	
+	var BirthDeathRate = AmCharts.makeChart( "BRdiv", {
+	  "type": "serial",
+	  "theme": "light",
+	  "dataProvider": BRDData.AF,
+	   "titles" : [
+		  {
+			  "text" : "Birth/Death Rate (Per 1000)",
+			  "size" : 11
+		  }],
+	  "valueAxes": [ {
+	    "gridColor": "#FFFFFF",
+	    "gridAlpha": 0.2,
+	    "dashLength": 0,
+		"minimum" : 0
+	  } ],
+	  "gridAboveGraphs": true,
+	  "startDuration": 1,
+	  "graphs": [ {
+	    "balloonText": "[[category]]: <b>[[value]]</b>",
+	    "fillAlphas": 0.8,
+	    "lineAlpha": 0.2,
+	    "type": "column",
+	    "valueField": "value"
+	  } ],
+	  "chartCursor": {
+	    "categoryBalloonEnabled": false,
+	    "cursorAlpha": 0,
+	    "zoomable": false
+	  },
+	  "categoryField": "title",
+	  "categoryAxis": {
+	    "gridPosition": "start",
+	    "gridAlpha": 0,
+	    "tickPosition": "start",
+	    "tickLength": 20
+	  },
+	  "export": {
+	    "enabled": true
+	  },
+	  
+	
+	} );
+	
+	
+	
+	// Event listener 
+	map.addListener("clickMapObject", function (event) {
+			population.dataProvider = PopulationData[event.mapObject.id];
+			population.validateData();
+			Area.dataProvider = AreaData[event.mapObject.id];
+			Area.validateData();
+			GDP.dataProvider = GDPData[event.mapObject.id];
+			GDP.validateData();
+			GDP.animateAgain();
+			BirthDeathRate.dataProvider = BRDData[event.mapObject.id];
+			BirthDeathRate.validateData();
+			BirthDeathRate.animateAgain();
+			
+	});
+	</script>
+	
+<div id="credits">	
+		<tt>Tawfeeq Abdul Gaffoor<br>
+			t3abdulg@uwaterloo.ca<tt>		
+</div>
+
+<div style="width: 98%; height: 97%; position: absolute;">
+	<div id="popdiv" style="width: 22%; height: 22%; position: absolute; top: 0% ; right: -1%; z-index: 100;"></div>
+	<div id="areadiv" style="width: 22%; height: 22%; position: absolute; top:25% ; right: -1%; z-index: 100;"></div>
+	<div id="GDPdiv" style="width: 12%; height: 22%; position: absolute; top:50% ; right: 4%; z-index: 100;"></div>
+	<div id="BRdiv" style="width: 12%; height: 22%; position: absolute; top:75% ; right: 4%; z-index: 100;"></div>
+    <div id="mapdiv" style="width: 83%; height: 100%; position: absolute; top: 0; left: 0;"></div>
+</div>
+
+</html>	 
+	
