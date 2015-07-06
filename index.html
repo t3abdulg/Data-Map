@@ -30,6 +30,13 @@
 		color: #808080
 
 	}
+	
+	
+	html { overflow-x: hidden; }
+	
+	body {
+    background-color: #535364;
+	}
 
 </style>
 
@@ -40,16 +47,17 @@
 	 var map = AmCharts.makeChart("mapdiv", {
 	  "type": "map",
 	  "theme": "light",
+	  "backroundAlpha" : 1,
 	  "showDescriptionOnHover" : false,
 	  "mouseWheelZoomEnabled" : true,
-	  "backgroundAlpha" : 0,
 	  "colorSteps": 100,
-	 backgroundColor : "#535364",
+	 "backgroundColor" : "#535364",
 	  
 	  "titles" : [
 		  {
 			  "text" : "Data Map",
-			  "size" : 15
+			  "size" : 15,
+			  "color" : "#ffffff"
 		  }],
 		  
 	  "dataProvider": 
@@ -61,11 +69,11 @@
 		  {
 		    "autoZoom": false,
 			color : "#B4B4B7",
-			colorSolid : "#C44348",
-			selectedColor : "#84ADE9",
+			colorSolid : "#84ADE9",
+			selectedColor : "#C44348",
 			outlineColor : "#666666",
 			rollOverColor : "#9EC2F7",
-			rollOverOutlineColor : "#000000",
+			rollOverOutlineColor : "#C44348",
 			"balloonText": "[[title]]: <b>[[value]]</b>"
 		  },
 		  
@@ -89,15 +97,16 @@
 	  "titles" : [
 		  {
 			  "text" : "Population",
-			  "size" : 11
+			  "size" : 11,
+			  "color" : "#ffffff"
 		  }],
 	  "dataProvider": PopulationData.AF,
-	  "titleField": "Title",
 	  "valueField": "data",
+	  "titleField": "Title",
 	  "labelRadius": 5,
 	  "radius": "42%",
 	  "innerRadius": "60%",
-	  "labelText":  "[[title]]",
+	  "labelsEnabled" : false,
 	} );
 	
 	
@@ -108,15 +117,16 @@
 	  "titles" : [
 		  {
 			  "text" : "Area",
-			  "size" : 11
+			  "size" : 11,
+			  "color" : "#ffffff"
 		  }],
 	  "dataProvider": AreaData.AF,
-	  "titleField": "Title",
 	  "valueField": "data",
+	  "titleField": "Title",
 	  "labelRadius": 5,
 	  "radius": "42%",
 	  "innerRadius": "60%",
-	  "labelText": "[[title]]",
+	  "labelsEnabled" : false,
 	} );
 	
 	
@@ -129,14 +139,17 @@
 	   "titles" : [
 		  {
 			  "text" : "GDP",
-			  "size" : 11
+			  "size" : 11,
+			  "color" : "#ffffff"
 		  }],
-	  "valueAxes": [ {
-	    "gridColor": "#FFFFFF",
-	    "gridAlpha": 0.2,
-	    "dashLength": 0,
-		"minimum" : 0
-	  } ],
+		  "valueAxes": [ {
+		    "gridColor": "#FFFFFF",
+		    "gridAlpha": 0.2,
+		    "dashLength": 0,
+			"minimum" : 0,
+	   		"color" : "#ffffff"
+			
+		  } ],
 	  "gridAboveGraphs": true,
 	  "startDuration": 1,
 	  "graphs": [ {
@@ -156,11 +169,10 @@
 	    "gridPosition": "start",
 	    "gridAlpha": 0,
 	    "tickPosition": "start",
-	    "tickLength": 20
+	    "tickLength": 20,
+	  	"color" : "#ffffff"
 	  },
-	  "export": {
-	    "enabled": true
-	  },
+	 
 	
 	} );
 	
@@ -172,13 +184,15 @@
 	   "titles" : [
 		  {
 			  "text" : "Birth/Death Rate (Per 1000)",
-			  "size" : 11
+			  "size" : 11,
+			  "color" : "#ffffff"
 		  }],
 	  "valueAxes": [ {
 	    "gridColor": "#FFFFFF",
 	    "gridAlpha": 0.2,
 	    "dashLength": 0,
-		"minimum" : 0
+		"minimum" : 0,
+		"color" : "#ffffff"
 	  } ],
 	  "gridAboveGraphs": true,
 	  "startDuration": 1,
@@ -199,11 +213,10 @@
 	    "gridPosition": "start",
 	    "gridAlpha": 0,
 	    "tickPosition": "start",
-	    "tickLength": 20
+	    "tickLength": 20,
+		"color" : "#ffffff"
 	  },
-	  "export": {
-	    "enabled": true
-	  },
+	 
 	  
 	
 	} );
@@ -231,11 +244,11 @@
 			t3abdulg@uwaterloo.ca<tt>		
 </div>
 
-<div style="width: 98%; height: 97%; position: absolute;">
-	<div id="popdiv" style="width: 22%; height: 22%; position: absolute; top: 0% ; right: -1%; z-index: 100;"></div>
-	<div id="areadiv" style="width: 22%; height: 22%; position: absolute; top:25% ; right: -1%; z-index: 100;"></div>
-	<div id="GDPdiv" style="width: 12%; height: 22%; position: absolute; top:50% ; right: 4%; z-index: 100;"></div>
-	<div id="BRdiv" style="width: 12%; height: 22%; position: absolute; top:75% ; right: 4%; z-index: 100;"></div>
+<div style="width: 98%; height: 97%; position: absolute; background-color: #535364; margin-top: 1px; color: #B4B4B7;">
+	<div id="popdiv" style="width: 22%; height: 26%; position: absolute; top: 0% ; right: -2.5%; z-index: 100; "></div>
+	<div id="areadiv" style="width: 22%; height: 26%; position: absolute; top:27% ; right: -2.5%; z-index: 100;"></div>
+	<div id="GDPdiv" style="width: 12%; height: 22%; position: absolute; top:55% ; right: 3%; z-index: 100;"></div>
+	<div id="BRdiv" style="width: 12%; height: 22%; position: absolute; top:76% ; right: 3%; z-index: 100;"></div>
     <div id="mapdiv" style="width: 83%; height: 100%; position: absolute; top: 0; left: 0;"></div>
 </div>
 
