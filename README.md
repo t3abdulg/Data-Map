@@ -13,12 +13,12 @@ If you wish to simply view the final product, head over to : t3abdulg.github.io/
 
 However, if you wish to see the full project in action:  
 
-1) Download
-        "dataparser.py" 
-        "index.html"
-        "countryinfo.csv"
-        "amcharts" (folder)
-        "ammaps" (folder)
+1) Download  
+        "dataparser.py"   
+        "index.html"  
+        "countryinfo.csv"  
+        "amcharts" (folder)  
+        "ammaps" (folder)  
 
 2) Place them all in the same folder, and run "dataparser.py"
 
