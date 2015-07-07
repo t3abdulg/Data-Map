@@ -2,16 +2,16 @@
 A Data-Map Programmed By Tawfeeq Abdul Gaffoor, and Driven By AmCharts/Maps.
 
 **Languages:**
-Python 2.7.10 (WILL NOT RUN with Pyhon 3.x)
-JavaScript
-HTML
-CSS
+Python 2.7.10 (WILL NOT RUN with Pyhon 3.x)  
+JavaScript  
+HTML  
+CSS  
 
 **How to Run/Setup:**
 
 If you wish to simply view the final product, head over to : t3abdulg.github.io/Data-Map
 
-However, if you wish to see the full project in action:
+However, if you wish to see the full project in action:  
 
 1) Download
         "dataparser.py" 
